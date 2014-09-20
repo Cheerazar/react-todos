@@ -12,4 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= react.min
+//= require react/todo-lists.react
