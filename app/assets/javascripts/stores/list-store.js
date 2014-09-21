@@ -57,6 +57,23 @@ var ListStore = (function () {
       }.bind(this))
       .fail(function (xhr) {
       })
+    },
+
+    updateList: function (listUpdate) {
+      $.ajax({
+        type: 'PATCH',
+        url: '/lists/' + listUpdate.id,
+        data: listUpdate
+      })
+      .done(function (data) {
+        var listsLength = _lists.length;
+        for (var i = 0; i < listsLength; i++) {
+          if (_lists[i].id === data.id) {
+            _lists[i] = data;
+            return this.triggerChange();
+          }
+        }
+      }.bind(this))
     }
   }
 }());
