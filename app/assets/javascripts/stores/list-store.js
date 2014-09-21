@@ -39,6 +39,24 @@ var ListStore = (function () {
 
     triggerChange: function (data) {
       $(this).trigger('change', data);
+    },
+
+    deleteTodoList: function (todoId) {
+      $.ajax({
+        type: 'DELETE',
+        url: '/lists/' + todoId
+      })
+      .done(function (data) {
+        var listsLength = _lists.length
+        for (var i = 0; i < listsLength; i++) {
+          if (_lists[i].id === data.id) {
+            _lists.splice(i, 1);
+            return this.triggerChange();
+          }
+        }
+      }.bind(this))
+      .fail(function (xhr) {
+      })
     }
   }
 }());
