@@ -12,7 +12,7 @@ var TodoLists = React.createClass({
   },
 
   componentDidMount: function() {
-    $(ListStore).on('change', function () {
+    ListStore.addChangeEvent(function () {
       this.setState({
         todoLists: ListStore.lists()
       });

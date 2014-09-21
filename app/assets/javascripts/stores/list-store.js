@@ -9,6 +9,7 @@ var ListStore = (function () {
         data: todoListTitle
       })
       .done(function (data) {
+        _lists.push(data)
         this.triggerChange();
       }.bind(this))
       .fail(function (xhr) {

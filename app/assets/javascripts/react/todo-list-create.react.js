@@ -18,7 +18,6 @@ var TodoListCreate = React.createClass({displayName: 'TodoListCreate',
     Object.keys(this.refs).forEach(function (ref) {
       todoListData.list[ref] = this.refs[ref].getDOMNode().value;
     }.bind(this));
-    debugger
     ListStore.createList(todoListData);
   }
 });
