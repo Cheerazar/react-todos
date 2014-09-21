@@ -12,6 +12,11 @@ class ListsController < ApplicationController
     end
   end
 
+  def destroy
+    List.destroy(params[:id])
+    render json: { id: params[:id].to_i }
+  end
+
   private
   def list_params
     params.require(:list).permit(:title)
